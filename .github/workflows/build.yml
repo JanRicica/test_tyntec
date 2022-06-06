@@ -11,5 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: radekholy24/tyntec-github-action-sms-beta@main
+        with:
+          fromPhoneNumber: ${{ secrets.FROM_PHONE_NUMBER }}
+          toPhoneNumber: ${{ secrets.TO_PHONE_NUMBER }}
+          message: welcome_message
+        env:
+          TYNTEC_API_KEY: ${{ secrets.TYNTEC_API_KEY }}
       - run: |
           echo "Hello world"
