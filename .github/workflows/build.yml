@@ -12,6 +12,4 @@ jobs:
     steps:
       - uses: radekholy24/tyntec-github-action-sms-beta@main
       - run: |
-          npm install
-      - run: |
-          npm run all
+          echo "Hello world"
