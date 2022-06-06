@@ -1,4 +1,4 @@
-name: 'test'
+name: Build
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
@@ -7,13 +7,11 @@ on: # rebuild any PRs and main branch changes
       - 'releases/*'
 
 jobs:
-  test: # make sure the action works on a clean machine without building
+  build: # make sure build/ci work properly
     runs-on: ubuntu-latest
     steps:
-      - uses: radekholy24/tyntec-github-action-sms-beta@wa-test
-        with:
-          fromPhoneNumber: ${{ secrets.FROM_PHONE_NUMBER }}
-          toPhoneNumber: ${{ secrets.TO_PHONE_NUMBER }}
-          message: welcome_message
-        env:
-          TYNTEC_API_KEY: ${{ secrets.TYNTEC_API_KEY }}
+      - uses: actions/checkout@v2
+      - run: |
+          npm install
+      - run: |
+          npm run all
